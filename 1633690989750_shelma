@@ -1,0 +1,161 @@
+exam@debian:~$ mkdir sales
+exam@debian:~$ cd sales
+exam@debian:~/sales$ mkdir location1 location2 location3
+exam@debian:~/sales$ cd location1
+exam@debian:~/sales/location1$ cat > sales1.txt
+sales1 is here
+exam@debian:~/sales/location1$ cat > sales2.txt
+sales2 is here
+exam@debian:~/sales/location1$ cat > sales3.txt
+sales3 is here
+exam@debian:~/sales/location1$ cd ..
+exam@debian:~/sales$ cd location2
+exam@debian:~/sales/location2$ cat > pur1.txt
+The purchase one is here
+exam@debian:~/sales/location2$ cat > pur2.txt
+The purchase two is here
+exam@debian:~/sales/location2$ cd ..
+exam@debian:~/sales$ cd location3
+exam@debian:~/sales/location3$ cat > stock1.txt
+surya
+saree 
+pants
+dhupatta
+churithar
+shirt
+jens
+shorts
+leggins
+t shirts
+lehangha
+exam@debian:~/sales/location3$ cat > stock2.txt
+Here is stock2
+exam@debian:~/sales/location3$ cd ..
+
+
+
+
+exam@debian:~/sales/location2$ cat pur1.txt  pur2.txt  >> ~/sales/location2/pur3.txt
+exam@debian:~/sales/location2$ cd ..
+exam@debian:~/sales$ cd location2
+exam@debian:~/sales/location2$ ls
+pur1.txt  pur2.txt  pur3.txt
+exam@debian:~/sales/location2$ cat pur3.txt
+The purchase one is here
+The purchase two is here
+
+
+exam@debian:~/sales/location2$ cp pur3.txt ~/sales/location3/stock3.txt
+exam@debian:~/sales/location2$ cd ..
+exam@debian:~/sales$ cd location3
+exam@debian:~/sales/location3$ ls
+stock1.txt  stock2.txt  stock3.txt
+exam@debian:~/sales/location3$ cat stock.txt
+The purchase one is here
+The purchase two is here
+
+
+exam@debian:~/sales/location3$ ls -l |more
+total 12
+-rw-r--r-- 1 exam exam 81 Oct  8 14:16 stock1.txt
+-rw-r--r-- 1 exam exam 15 Oct  8 14:17 stock2.txt
+-rw-r--r-- 1 exam exam 50 Oct  8 14:31 stock3.txt
+exam@debian:~/sales/location3$ chmod g+rx stock3.txt
+exam@debian:~/sales/location3$ chmod g+wx stock3.txt
+exam@debian:~/sales/location3$ chmod g+x stock3.txt
+exam@debian:~/sales/location3$ ls -l |more
+total 12
+-rw-r--r-- 1 exam exam 81 Oct  8 14:16 stock1.txt
+-rw-r--r-- 1 exam exam 15 Oct  8 14:17 stock2.txt
+-rw-rwxr-- 1 exam exam 50 Oct  8 14:31 stock3.txt
+
+
+exam@debian:~/sales/location3$ head -10 stock1.txt
+surya
+saree
+pants
+dhupatta
+churithar
+shirt
+jens
+shorts
+leggins
+t shirts
+exam@debian:~/sales/location3$ cd ..
+
+
+exam@debian:~/sales$ ls -l |more
+total 12
+drwxr-xr-x 2 exam exam 4096 Oct  8 14:10 location1
+drwxr-xr-x 2 exam exam 4096 Oct  8 14:27 location2
+drwxr-xr-x 2 exam exam 4096 Oct  8 14:31 location3
+
+
+exam@debian:~/sales$ emacs volume.sh
+^Cexam@debian:~/sales$ bash volume.sh
+The menu is here
+1 . Sphere
+2 . Cylinder
+3 . Cube
+Enter the option:
+2
+Enter the radius of cylinder:
+3
+Enter the heigth of cylinder:
+4
+volume.sh: line 19: d: command not found
+
+The volume of sphere is 36
+exam@debian:~/sales$ emacs volume.sh
+^Cexam@debian:~/sales$ bash volume.sh
+The menu is here
+1 . Sphere
+2 . Cylinder
+3 . Cube
+Enter the option:
+3
+Enter the length of cube
+3
+The volume of cube is 27
+exam@debian:~/sales$ bash volume.sh
+The menu is here
+1 . Sphere
+2 . Cylinder
+3 . Cube
+Enter the option:
+1
+Enter the radius of sphere:
+2
+The volume of the sphere is 24 
+exam@debian:~/sales$ 
+
+
+echo "The menu is here"
+echo "1 . Sphere"
+echo "2 . Cylinder"
+echo "3 . Cube"
+echo "Enter the option:"
+read i
+case $i in
+    1)echo "Enter the radius of sphere:"
+      read r
+      ((d = (4 / 3) * (22 / 7)))
+      ((e = $r * $r * $r))
+      ((v = $e * $d))
+      echo "The volume of the sphere is $v "
+      ;;
+    2)echo "Enter the radius of cylinder:"
+      read r
+      echo "Enter the heigth of cylinder:"
+      read h
+      d = $(( (22 / 7) ))
+      echo $d
+      ((v =  $r *$r * $h))
+      echo "The volume of sphere is $v"
+      ;;
+    3)echo "Enter the length of cube"
+      read a
+      ((v = $a * $a * $a))
+      echo "The volume of cube is $v"
+      ;;
+esa
